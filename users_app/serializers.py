@@ -1,13 +1,11 @@
 from rest_framework import serializers
-from .models import User,Blog,Profile
-from rest_framework_simplejwt.tokens import RefreshToken,TokenError
+from .models import User,Profile
 from rest_framework.exceptions import AuthenticationFailed
 from django.contrib import auth
 from rest_framework.validators import ValidationError
 
-
-
 class UserSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model=User
         fields=['email']
@@ -67,10 +65,4 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model=Profile
         fields=['id','user','first_name','last_name','birth_date']
-
-
-class BlogSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Blog
-        fields = ['id', 'title', 'content', 'author','created_at', 'updated_at']
 
